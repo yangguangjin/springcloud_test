@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: springcloud-zuul
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7900/eureka/
+  instance:
+  prefer-ip-address: true
+  instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+#springcloud-zuul是服务名字
+#springcloud-zuul:
+  #ribbon:
+    #zuul随机负载均衡策略
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+#自定义网关路由
+zuul:
+  routes:
+    springcloud-consumer:
+      path: /api/**
+      serviceId: springcloud-consumer
+  #个人测试网络电脑配置不好容易超时报异常,这里设置连接时间长一点
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+ribbon:
+  #个人测试网络电脑配置不好容易超时报异常,这里设置连接时间长一点
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            #个人测试网络电脑配置不好容易超时报异常,这里设置连接时间长一点
+            timeoutInMilliseconds: 60000

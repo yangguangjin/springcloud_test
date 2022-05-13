@@ -1,0 +1,27 @@
+# 应用名称
+spring:
+  application:
+    name: springcloud-admin
+  boot:
+    admin:
+      notify:
+        mail:
+          #收件邮箱
+          to: 1923497842@qq.com
+          #发件邮箱
+          from: 1923497842@qq.com
+server:
+  port: 9999
+mail:
+  host: smtp.qq.com
+  #发送者QQ
+  username: 1923497842
+  #QQ邮箱POP3/SMTP服务授权码
+  password: fahmjdnpdoojjheh
+  properties:
+    mail:
+      smpt:
+        auth: true
+        starttls:
+          enable: true
+          required: true

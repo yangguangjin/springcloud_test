@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: springcloud-eureka
+eureka:
+  client:
+    #是否把自己注册到其他 Eureka Server中去
+    register-with-eureka: false
+    #是否从其他 Eureka Server获取注册列表
+    fetch-registry: false
+    service-url:
+      #注册的url地址
+      defaultZone: http://localhost:7900/eureka/
+  #应用实例的主机名,必须有,Eureka它通过主机名+端口+应用名称来发现其他电脑机器上的应用实例,
+  #如果都一样就开不起第二个eureka实例
+  instance:
+    hostname: localhost
+server:
+  port: 7900
+
+
